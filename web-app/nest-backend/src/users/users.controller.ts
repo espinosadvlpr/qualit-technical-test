@@ -17,6 +17,7 @@ export class UsersController {
     async createUser(@Body() newUser: userDTO): Promise<User> {
         const hashedPassword = await this.usersService.hashPassword(newUser.password)
         const user = {
+            email: newUser.email,
             username: newUser.username,
             password: hashedPassword
         }
@@ -25,8 +26,8 @@ export class UsersController {
 
     @Post('login')
     async login(@Body() userInfo: userDTO ): Promise<User> {
-        const { username, password } = userInfo
-        const user = await this.usersService.getUser(username)
+        const { email, password } = userInfo
+        const user = await this.usersService.getUser(email)
         if(!user){
             throw new NotFoundException('User not found.')
         }
