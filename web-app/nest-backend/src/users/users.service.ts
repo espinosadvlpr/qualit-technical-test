@@ -20,9 +20,9 @@ export class UsersService {
     return this.userRepository.save(newUser);
   }
 
-  getUser(username: string) {
+  getUser(email: string) {
     return this.userRepository.findOne({
-      where: { username }
+      where: { email }
     })
   }
 
