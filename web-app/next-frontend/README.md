@@ -1,36 +1,34 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Products APP
+This React frontend application, built with TypeScript, serves as an users authentication and product management system. It utilizes the Next.js framework to list products information, and provides user authentication functionality with session management.
 
-## Getting Started
+## Features
+* **List Products:** Products can be listed, showing details such as id, product name, description and the user id of the owner of the product (an user can't see other user products).
+* **User Authentication:** Users can log into the application using next-auth library.
+* **Session Management:** User sessions are managed securely, providing a seamless experience across different parts of the application.
 
-First, run the development server:
+## Technologies Used
+* **React:** JavaScript library for building user interfaces.
+* **TypeScript:** Typed superset of JavaScript for enhanced developer experience.
+* **Next.js:** React framework for building server-side rendered web applications.
+* **NextAuth.js:** Authentication library for Next.js applications, providing user authentication and session management functionality.
+* **Tailwind CSS:** Utility-first CSS framework for styling user interfaces.
 
+## Installation
+1. Install dependencies.
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+    npm install
+```
+2. Copy the .env.example in your own .env.local file with the key for next auth library.
+   The token has to be generated in base64, so you can use openssl library with the command: `openssl rand -base64 32` . After copy the response for the command you can add it in your .env.local file.
+   The nextauth_url can change with the deployment of the application but in dev environment you can add your localhost url that the nextjs application, for example: `http://localhost:4000/`.
+```bash
+    NEXTAUTH_SECRET=
+    NEXTAUTH_URL=
+```
+3. Run the server.
+```bash
+    npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## Important
+Before using the aplication you need to start the backend server and create at least one user and one product related, so the app is going to work in optimous way :)
