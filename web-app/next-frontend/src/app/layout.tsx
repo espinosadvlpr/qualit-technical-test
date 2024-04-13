@@ -2,8 +2,8 @@ import './ui/global.css'
 import { inter } from "./ui/fonts";
 
 export const metadata = {
-  title: 'Invoices APP',
-  description: 'APP to save invoices',
+  title: 'Products APP',
+  description: 'APP to list your products',
 }
 
 export default function RootLayout({
