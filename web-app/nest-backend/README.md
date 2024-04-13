@@ -1,73 +1,65 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
-</p>
+# Products API
+This NestJS application, built with TypeScript, serves an users authentication and products management system. It uses TypeORM to interact with a MySQL database to manage users and products information. 
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+## Features
+* **Manage Users:** Users can be managed, including details like username, email and password.
+* **Manage Products:** Products can be added and listed.
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
-
-## Description
-
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+## Technologies Used
+* **NestJS:** Runtime environment for server-side application.
+* **TypeScript:** Typed superset of JavaScript for enhanced developer experience.
+* **TypeORM:** ORM library to config the database data and manage the database requests.
+* **MySQL:** Relational database management system used for storing users and products data.
+* **Bcrypt:** Libary to encrypt the user's password before storing in the database.
 
 ## Installation
-
+1. Install dependencies.
 ```bash
-$ npm install
+  npm install
+```
+2. Create a database schema in MySQL and save the name. After that, copy the .env.example file in a .env file and fill the data for the MySQL connection.
+```bash
+  DB_HOST=
+  DB_PORT=
+  DB_USERNAME=
+  DB_PASSWORD=
+  DB_NAME=
+``` 
+3. Run the server.
+```bash
+  npm run start:dev
 ```
 
-## Running the app
+## API Endpoints
 
-```bash
-# development
-$ npm run start
+- Users:
+  ```
+  GET /users/  --Get all users 
 
-# watch mode
-$ npm run start:dev
+  POST /users/register/  --Register one user in the database
+  {
+    "email": "",
+    "username": "",
+    "password": ""
+  }
 
-# production mode
-$ npm run start:prod
-```
+  POST /users/login/  --Authentication method for log in to the app
+  {
+    "email": "",
+    "password": ""
+  }
+  ```
 
-## Test
+- Products:
+  ```
+  GET /products/  --Get all products
 
-```bash
-# unit tests
-$ npm run test
+  GET /products/:username  --Get all products owned by a user
 
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
-```
-
-## Support
-
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
-
-## Stay in touch
-
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
-
-## License
-
-Nest is [MIT licensed](LICENSE).
+  POST /products/create/  --Create a product in the database
+  {
+    "product_name": "",
+    "description": "",
+    "ownerId": 
+  }
+  ```
